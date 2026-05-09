@@ -1,0 +1,15 @@
+# Root .htaccess — use only if DocumentRoot is the project folder (not recommended).
+# Prefer pointing DocumentRoot to /public
+
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Deny direct web access to sensitive folders if someone misconfigures DocumentRoot
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(?!index\.php).*$">
+    # no-op placeholder
+  </FilesMatch>
+</IfModule>
